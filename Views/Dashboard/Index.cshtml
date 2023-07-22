@@ -1,0 +1,10 @@
+﻿@using System.Text.Json @{
+    ViewData["Title"] = "Index";
+    string strUser = Context.Session.GetString("User"); //retriving the session data at the dashboard page
+    LoginViewModel user = JsonSerializer.Deserialize<LoginViewModel>(strUser);
+    //The session uses a cookie By default, this cookie is named as AspNetCore.Session
+} 
+<h1>Dashboard</h1>
+<p>@TempData["Message"]</p> 
+<p>Login User: @user.Username</p> 
+<a asp-action="LogOut" asp-controller="Account">LogOut</a> 
